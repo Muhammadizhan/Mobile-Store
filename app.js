@@ -64,3 +64,8 @@ const phones = [
     price: 300000,
   },
 ];
+const div = document.querySelector(".containers");
+
+for (let i = 0; i < phones.length; i++) {
+  // console.log(phones);
+}
