@@ -65,16 +65,40 @@ const phones = [
   },
 ];
 
+// const arr = [];
+// const div = document.querySelector(".produts");
+// function renderItems() {
+//   for (let i = 0; i < phones.length; i++) {
+//     div.innerHTML += `
+//       <div class="card bg-dark text-light border-light" style="width: 18rem;">
+//           <div class="card-body">
+//               <h5 class="card-title">${
+//                 phones[i].brand + " " + phones[i].model
+//               }</h5>
+//               <p class="card-text">Rs ${phones[i].price}</p>
+//               <button onclick="addtocart(${i})" class="btn btn-primary">Add to Cart</button>
+//           </div>
+//       </div>
+//       `;
+//   }
+// }
+
 const arr = [];
-const div = document.querySelector(".containers");
+const div = document.querySelector(".products");
+
+// Define the phones array with some sample data
+// const mobile = [
+//   { brand: "Samsung", model: "Galaxy S21", price: 1000 },
+//   { brand: "Apple", model: "iPhone 12", price: 1200 },
+//   Add more phone objects as needed
+// ];
+
 function renderItems() {
   for (let i = 0; i < phones.length; i++) {
     div.innerHTML += `
       <div class="card bg-dark text-light border-light" style="width: 18rem;">
           <div class="card-body">
-              <h5 class="card-title">${
-                phones[i].brand + " " + phones[i].model
-              }</h5>
+              <h5 class="card-title">${phones[i].brand} ${phones[i].model}</h5>
               <p class="card-text">Rs ${phones[i].price}</p>
               <button onclick="addtocart(${i})" class="btn btn-primary">Add to Cart</button>
           </div>
@@ -82,6 +106,8 @@ function renderItems() {
       `;
   }
 }
+
+// Call renderItems to render the items
 renderItems();
 function addtocart(index) {
   if (arr.includes(phones[index])) phones[index].quantity += 1;
