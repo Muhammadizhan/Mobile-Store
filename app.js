@@ -56,16 +56,42 @@ const phones = [
     price: 15000,
   },
   {
-    brand: "Abdullah",
-    model: "s50",
+    brand: "Motorola",
+    model: "G power",
     ram: 50,
     rom: 1024,
     camera: "60 megapixel",
     price: 300000,
   },
 ];
-const div = document.querySelector(".containers");
 
-for (let i = 0; i < phones.length; i++) {
-  // console.log(phones);
+const arr = [];
+const div = document.querySelector(".containers");
+function renderItems() {
+  for (let i = 0; i < phones.length; i++) {
+    div.innerHTML += `
+      <div class="card bg-dark text-light border-light" style="width: 18rem;">
+          <div class="card-body">
+              <h5 class="card-title">${
+                phones[i].brand + " " + phones[i].model
+              }</h5>
+              <p class="card-text">Rs ${phones[i].price}</p>
+              <button onclick="addtocart(${i})" class="btn btn-primary">Add to Cart</button>
+          </div>
+      </div>
+      `;
+  }
+}
+renderItems();
+function addtocart(index) {
+  if (arr.includes(phones[index])) phones[index].quantity += 1;
+  else {
+    phones[index].quantity = 1;
+    arr.push(phones[index]);
+  }
+  console.log(phones);
+}
+function gotocart() {
+  console.log("cart");
+  window.location = "cart.html";
 }
