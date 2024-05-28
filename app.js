@@ -74,35 +74,20 @@ if (items === null) {
 }
 
 const div = document.querySelector(".products");
-// function renderItems() {
-//   for (let i = 0; i < phones.length; i++) {
-//     div.innerHTML += `
-//       <div class="card bg-dark text-light border-light" style="width: 18rem;">
-//           <div class="card-body">
-//               <h5 class="card-title">${
-//                 phones[i].brand + " " + phones[i].model
-//               }</h5>
-//               <p class="card-text">Rs ${phones[i].price}</p>
 
-//               <button onclick="addtocart(${i})" class="btn btn-primary">Add to Cart</button>
-//           </div>
-//       </div>
-//       `;
-//   }
-// }
 function renderItems() {
   for (let i = 0; i < phones.length; i++) {
     div.innerHTML += `
-          <div class="card bg-dark text-light border-light" style="width: 18rem;">
-              <div class="card-body">
-                  <h2 class="card-title">${phones[i].brand} ${phones[i].model}</h2>
-                  <p class="card-text">RAM: ${phones[i].ram} GB</p>
-                  <p class="card-text">ROM: ${phones[i].rom} GB</p>
-                  <p class="card-text">Camera: ${phones[i].camera}</p>
-                  <p class="card-text">Price: Rs ${phones[i].price}</p>
-                  <button onclick="addtocart(${i})" class="btn btn-primary">Add to Cart</button>
-              </div>
-          </div>
+        <div class="card bg-dark text-light border-light" style="width: 18rem;">
+            <div class="card-body">
+                <h2 class="card-title">${phones[i].brand} ${phones[i].model}</h2>
+                <p class="card-text">RAM: ${phones[i].ram} GB</p>
+                <p class="card-text">ROM: ${phones[i].rom} GB</p>
+                <p class="card-text">Camera: ${phones[i].camera}</p>
+                <p class="card-text">Price: Rs ${phones[i].price}</p>
+                <button onclick="addtocart(${i})" class="btn btn-primary">Add to Cart</button>
+            </div>
+        </div>
       `;
   }
 }
@@ -116,11 +101,10 @@ function addtocart(index) {
     phones[index].quantity = 1;
     arr.push(phones[index]);
   }
-  console.log(arr);
+  localStorage.setItem("cartItems", JSON.stringify(arr));
+  alert("Product added to cart successfully!");
 }
 
 function gotocart() {
-  console.log("cart");
-  localStorage.setItem("cartItems", JSON.stringify(arr));
-  window.location = "cart.html";
+  window.location.href = "cart.html";
 }
