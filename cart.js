@@ -64,7 +64,6 @@ function deleteItem(index) {
 }
 
 function placeOrder() {
-  // Show order form
   container.innerHTML = `
     <h3 class="text-center">Enter your details:</h3>
     <form id="orderForm">
@@ -84,7 +83,6 @@ function placeOrder() {
     </form>
   `;
 
-  // Handle form submission
   const orderForm = document.getElementById("orderForm");
   orderForm.addEventListener("submit", function (event) {
     event.preventDefault();
@@ -92,12 +90,6 @@ function placeOrder() {
     const phone = document.getElementById("phone").value;
     const address = document.getElementById("address").value;
 
-    // Assuming order confirmation
     alert("Your order has been successfully placed!");
-
-    // Optionally, you can reset cartItems and redirect user to home page
-    // cartItems = [];
-    // localStorage.setItem("cartItems", JSON.stringify(cartItems));
-    // window.location.href = "/";
   });
 }
