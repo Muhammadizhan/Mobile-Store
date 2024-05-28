@@ -23,6 +23,7 @@ function renderItems() {
       }</span>
             <button onclick="incrementQuantity(${index})" class="btn btn-secondary">+</button>
             <button onclick="deleteItem(${index})" class="btn btn-danger">Delete</button>
+            <button onclick="placeOrder()" class="btn btn-primary">Place Order</button>
           </div>
         </div>
       `;
@@ -60,4 +61,43 @@ function deleteItem(index) {
   cartItems.splice(index, 1);
   localStorage.setItem("cartItems", JSON.stringify(cartItems));
   renderItems();
+}
+
+function placeOrder() {
+  // Show order form
+  container.innerHTML = `
+    <h3 class="text-center">Enter your details:</h3>
+    <form id="orderForm">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="name" required>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone Number:</label>
+        <input type="tel" class="form-control" id="phone" required>
+      </div>
+      <div class="form-group">
+        <label for="address">Address:</label>
+        <textarea class="form-control" id="address" rows="3" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Confirm Order</button>
+    </form>
+  `;
+
+  // Handle form submission
+  const orderForm = document.getElementById("orderForm");
+  orderForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    const name = document.getElementById("name").value;
+    const phone = document.getElementById("phone").value;
+    const address = document.getElementById("address").value;
+
+    // Assuming order confirmation
+    alert("Your order has been successfully placed!");
+
+    // Optionally, you can reset cartItems and redirect user to home page
+    // cartItems = [];
+    // localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    // window.location.href = "/";
+  });
 }
